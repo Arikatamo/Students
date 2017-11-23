@@ -41,10 +41,6 @@ namespace DAL
                 bf.Serialize(fs, _students);
             }
         }
-        public IList<Student> GetAllStsssudents
-        {
-            get { return _students; }
-        }
 
         public IList<Student> GetAllStudents
         {

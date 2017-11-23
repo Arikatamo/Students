@@ -40,12 +40,6 @@ namespace DAL
             set { _marks = value; }
         }
 
-        public IList<Mark> Marksss
-        {
-            get { return _marks; }
-            set { _marks = value; }
-        }
-
 
     }
 }
