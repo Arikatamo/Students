@@ -1,0 +1,35 @@
+﻿<Window x:Class="WpfStudentApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfStudentApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="370.023" Width="594.68" ResizeMode="NoResize" >
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="188*"/>
+                <ColumnDefinition Width="210"/>
+                <ColumnDefinition Width="189*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="24"/>
+                <RowDefinition Height="29"/>
+                <RowDefinition/>
+                <RowDefinition Height="43"/>
+            </Grid.RowDefinitions>
+            <Label Content="StudentSercvice" HorizontalContentAlignment="Center" Background="#FF65D5FF" Grid.ColumnSpan="3">
+                <Label.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="1"/>
+                </Label.Effect>
+            </Label>
+            <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,62,10,95" Width="190" Height="87">
+                <Button Content="Додати Студента" Margin="5,5,5,5" Click="Button_Click"/>
+                <Button Content="Завантажити Студентів" Margin="5,0,5,5"/>
+                <Button Content="Показати Студентів" Margin="5,0,5,5" Click="Button_Click_1"/>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Window>
