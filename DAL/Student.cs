@@ -14,7 +14,12 @@ namespace DAL
         private string _name;        
         private IList<Mark> _marks;
         private string _image;
-        private string _imagesmal;
+
+        public string M_img_small
+        {
+            get { return ConfigurationManager.AppSettings["ImagesPath"].ToString() + image; }
+        }
+
 
         public string Name
         {
@@ -24,7 +29,7 @@ namespace DAL
         public string Image_smal
         {
             get {
-                return ConfigurationManager.AppSettings["ImagesPath"].ToString()+_image; }
+                return _image; }
             set { _image = value; }
         }
         public string image
