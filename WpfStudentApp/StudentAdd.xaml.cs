@@ -29,9 +29,9 @@ namespace WpfStudentApp
             InitializeComponent();
             stud = a;
             foreach (string item in stud.GetDisciplines)
-                {
+            {
                 pred.Items.Add(item);
-                }
+            }
             }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -83,7 +83,7 @@ namespace WpfStudentApp
                     /// Збереження тсудента
                     stud.SaveStud();
                     /// Почистили блоки від данних
-                    stud.GetAllStudents[stud.CountStudents].Marks_M.Clear();
+                   // stud.GetAllStudents[stud.CountStudents].Marks_M.Clear();
                     add_ocin.IsEnabled = true;
                 }
                 else
@@ -96,7 +96,7 @@ namespace WpfStudentApp
                 {
                     try
                     {
-                        if (pred.SelectedIndex==-1)
+                        if (pred.SelectedIndex == 1)
                         {
                             throw new Exception("Оберіть або додайте предмет");
                         }
