@@ -57,6 +57,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddDiscipline.xaml.cs">
+      <DependentUpon>AddDiscipline.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddMarks.xaml.cs">
+      <DependentUpon>AddMarks.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DialogResult.cs" />
     <Compile Include="ShowStud.xaml.cs">
       <DependentUpon>ShowStud.xaml</DependentUpon>
@@ -64,6 +70,14 @@
     <Compile Include="StudentAdd.xaml.cs">
       <DependentUpon>StudentAdd.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddDiscipline.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddMarks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

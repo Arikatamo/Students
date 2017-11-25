@@ -11,8 +11,20 @@ namespace DAL
 {
     public class StudentService
     {
-        private IList<Student> _students;
+
+        //переробив на ліст
         private string _fileName;// = "students.bin";
+        private string _fileNameDisciplines;// = "students.bin";
+
+        private IList<Student> _students;
+        static private IList<string> _disciplines;
+
+        public IList<string> GetDisciplines
+        {
+            get { return _disciplines; }
+            set { _disciplines = value; }
+        }
+
         public StudentService()
         {
             _fileName = ConfigurationManager.AppSettings["StudentFileName"].ToString();
@@ -28,12 +40,33 @@ namespace DAL
             {
                 _students = new List<Student>();
             }
+
+            //завантаження списку дисциплін
+            _fileNameDisciplines = ConfigurationManager.AppSettings["DisciplinesFileName"].ToString();
+            if (File.Exists(_fileNameDisciplines))
+            {
+                using (FileStream fs = new FileStream(_fileNameDisciplines, FileMode.Open, FileAccess.Read))
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    _disciplines = (IList<string>)bf.Deserialize(fs);
+                }
+            }
+            else
+            {
+                _disciplines = new List<string>();
+            }
+
         }
         public void Add(Student student)
         {
             _students.Add(student);
         }
-        public void Save()
+        public void AddDiscipline(string discipline)
+        {
+            _disciplines.Add(discipline);
+        }
+
+        public void SaveStud()
         {
             using (FileStream fs = new FileStream(_fileName, FileMode.Create, FileAccess.ReadWrite))
             {
@@ -41,6 +74,15 @@ namespace DAL
                 bf.Serialize(fs, _students);
             }
         }
+        public void SaveDisciplines()
+        {
+            using (FileStream fs = new FileStream(_fileNameDisciplines, FileMode.Create, FileAccess.ReadWrite))
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                bf.Serialize(fs, _disciplines);
+            }
+        }
+
 
         public IList<Student> GetAllStudents
         {

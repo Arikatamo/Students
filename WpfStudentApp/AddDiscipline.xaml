@@ -1,0 +1,34 @@
+﻿<Window x:Class="WpfStudentApp.AddDiscipline"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfStudentApp"
+        mc:Ignorable="d"
+        Title="AddDiscipline" Height="170.213" Width="300">
+    <Grid Margin="0,0,0,2" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="22"/>
+            <ColumnDefinition Width="231*"/>
+            <ColumnDefinition Width="22"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26"/>
+            <RowDefinition Height="37"/>
+            <RowDefinition Height="33"/>
+            <RowDefinition Height="31.191"/>
+        </Grid.RowDefinitions>
+        <Label Content="Додати дисципліну" HorizontalContentAlignment="Center" Background="#FF6573FF" Grid.ColumnSpan="5">
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="2"/>
+            </Label.Effect>
+        </Label>
+        <StackPanel Grid.Column="1" Grid.Row="1" Margin="6,10,6,0" Grid.RowSpan="3">
+            <Label Content="Предмет" Margin="0,0,0,5" Background="Aqua" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+            <TextBox x:Name="DiscipName" Height="23"/>
+            <Button x:Name="add_ocin" Content="Додати дисципліну" Margin="0,10,0,0" HorizontalAlignment="Left" Width="236" Click="add_ocin_Click"/>
+        </StackPanel>
+
+
+    </Grid>
+</Window>

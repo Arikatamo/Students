@@ -10,14 +10,18 @@ namespace DAL
     [Serializable]
     public class Student
     {
+        static ushort idCounter = 1;
         private string _name;
         // Ключ предмет + Ліст оцінок по тому предмету!
-        private Dictionary<string, List<short>> M_Marks;
+        private Dictionary<string,List<short>> Marks;
+        public Student()
+        {
+            Id = idCounter++;
+        }
 
         public Dictionary<string, List<short>> Marks_M
         {
-            get { return M_Marks; }
-            set { M_Marks = value; }
+            get { return Marks; }
         }
         private string _image;
 

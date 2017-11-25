@@ -28,7 +28,11 @@ namespace WpfStudentApp
         {
             InitializeComponent();
             stud = a;
-        }
+            foreach (string item in stud.GetDisciplines)
+                {
+                pred.Items.Add(item);
+                }
+            }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -47,8 +51,17 @@ namespace WpfStudentApp
             }
             if (but_add.Name == "add")
             {
+                //переврка на наявність студента в списку
                 if (!String.IsNullOrEmpty(_name.Text) && image.Source != null && _name.Text != "Name")
                 {
+                    foreach (Student st in stud.GetAllStudents)
+                    {
+                        if (String.Compare(st.Name, _name.Text, true) == 0)
+                        {
+                            MessageBox.Show("Помилка", "Такий студент вже існує. Змініть ім'я", MessageBoxButton.OK);
+                            return;
+                        }
+                    } 
                     ///Додаємо назву картинки + її розширення з оригіналу
                     string img_name = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(image.Source.ToString());
                     /// Додаємо студента до колекції з Назвою оригінальної картиник
@@ -68,30 +81,30 @@ namespace WpfStudentApp
                     Bitmap s = new Bitmap(image.Source.ToString().Trim(@"file://".ToCharArray()));
                     origin.Save(ConfigurationManager.AppSettings["ImagesPath"].ToString() + img_name);
                     /// Збереження тсудента
-                    stud.Save();
+                    stud.SaveStud();
                     /// Почистили блоки від данних
                     stud.GetAllStudents[stud.CountStudents].Marks_M.Clear();
+                    add_ocin.IsEnabled = true;
                 }
                 else
                 {
                     MessageBox.Show("Помилка", "Ви не ввели дані студента", MessageBoxButton.OK);
                 }
-                ///// Додавання оціенок до вже доданого Юзера... без Перевірок чи доданий юзер, іначе буде просто додавати до останнього пацана в в Діктіонарі!!
+                ///// Додавання оцінок до вже доданого Юзера... без Перевірок чи доданий юзер, іначе буде просто додавати до останнього пацана в в Діктіонарі!!
                 ///// спробуй перевірити на роботоспособность і якусь перевірку, щоб кнопка додавання оцінок не появлялася поки не нажме кнопку додати студента!
                 if (but_add.Name == "Add_Ocin")
                 {
-                    short a;
                     try
                     {
-                        if (!String.IsNullOrEmpty(ocin.Name))
+                        if (pred.SelectedIndex==-1)
                         {
-                            throw new Exception("Поле Пусте");
+                            throw new Exception("Оберіть або додайте предмет");
                         }
-                        if (short.TryParse(ocin.Text, out a) && a < 0 || a > 100)
+                        if (short.TryParse(ocin.Text, out short a) && a < 0 || a > 100)
                         {
                             throw new Exception("Оцінка повинна бути від 1 - 100");
                         }
-                        if (stud.GetAllStudents[stud.CountStudents].Marks_M[pred.Text] != null)
+                        if (stud.GetAllStudents[stud.CountStudents].Marks_M.ContainsKey(pred.Text))
                         {
                             stud.GetAllStudents[stud.CountStudents].Marks_M[pred.Text].Add(a);
                         }

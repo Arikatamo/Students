@@ -30,6 +30,7 @@ namespace WpfStudentApp
             StudentList.AutoGenerateColumns = false;
             StudentList.ItemsSource = stud.GetAllStudents;
             StudentList.SelectionMode = DataGridSelectionMode.Single;
+            
         }
 
         private void StudentList_SelectionChanged(object sender, SelectionChangedEventArgs e)

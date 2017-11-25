@@ -41,5 +41,19 @@ namespace WpfStudentApp
             ShowStud stud = new ShowStud(studService);
             stud.ShowDialog();
         }
+
+        //додати оцінки
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            AddMarks addMarks = new AddMarks(studService);
+            addMarks.ShowDialog();
+        }
+
+        //додати дисципліну
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            AddDiscipline addDiscipline = new AddDiscipline(studService);
+            addDiscipline.ShowDialog();
+        }
     }
 }
