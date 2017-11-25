@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DAL;
 using System.Drawing;
+using System.Data;
 
 namespace WpfStudentApp
 {
@@ -28,7 +29,15 @@ namespace WpfStudentApp
             stud = a;
             StudentList.AutoGenerateColumns = false;
             StudentList.ItemsSource = stud.GetAllStudents;
+            StudentList.SelectionMode = DataGridSelectionMode.Single;
+        }
 
+        private void StudentList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (StudentList.SelectedIndex < StudentList.Items.Count)
+            {
+                FullImage.Source = new BitmapImage(new Uri((StudentList.SelectedItem as Student).M_img_Original));
+            }
         }
     }
 }

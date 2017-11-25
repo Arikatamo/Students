@@ -38,10 +38,9 @@ namespace WpfStudentApp
             {
                 images = new OpenFileDialog();
                 images.Filter = @"All Img|*.jpg;*.jpeg;*.png";
-
+                // При додаванні картинки вона виводиться в блоці image
                 if (images.ShowDialog() == true)
                 {
-
                     image.Source = new BitmapImage(new Uri(images.FileName));
                 }
 
@@ -50,12 +49,33 @@ namespace WpfStudentApp
             {
                 if (!String.IsNullOrEmpty(_name.Text) && image.Source != null && _name.Text != "Name")
                 {
+                    ///Додаємо назву картинки + її розширення з оригіналу
                     string img_name = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(image.Source.ToString());
+                    /// Додаємо студента до колекції з Назвою оригінальної картиник
                     stud.Add(new Student() { Name = _name.Text, image = img_name });
-                    Bitmap a = new Bitmap(image.Source.ToString().Trim(@"file://".ToCharArray()));
-                    a.Save(ConfigurationManager.AppSettings["ImagesPath"].ToString() + img_name);
+                    /// Створюємо  Бітмап оригінальної картинки
+                    Bitmap origin = new Bitmap(image.Source.ToString().Trim(@"file://".ToCharArray()));
+                    ///Створюємо картинки під різні розміри
+                    ///
+                    ///
+                    ///Маленькі картинки
+                    Bitmap resized = new Bitmap(origin, new System.Drawing.Size(32, 32));
+                    resized.Save(ConfigurationManager.AppSettings["ImagesPath_small"].ToString() + img_name);
+                    /// Середені картинки
+                    resized = new Bitmap(origin, new System.Drawing.Size(150,150));
+                    resized.Save(ConfigurationManager.AppSettings["ImagesPath_middle"].ToString() + img_name);
+                    /// Оригінал
+                    Bitmap s = new Bitmap(image.Source.ToString().Trim(@"file://".ToCharArray()));
+                    origin.Save(ConfigurationManager.AppSettings["ImagesPath"].ToString() + img_name);
+                    /// Збереження тсудента
                     stud.Save();
-
+                    /// Почистили блоки від данних
+                    image.Source = null;
+                    _name.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Помилка", "Ви не ввели дані студента", MessageBoxButton.OK);
                 }
             }
         }

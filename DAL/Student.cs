@@ -17,10 +17,16 @@ namespace DAL
 
         public string M_img_small
         {
+            get { return ConfigurationManager.AppSettings["ImagesPath_small"].ToString() + image; }
+        }
+        public string M_img_Middle
+        {
+            get { return ConfigurationManager.AppSettings["ImagesPath_middle"].ToString() + image; }
+        }
+        public string M_img_Original
+        {
             get { return ConfigurationManager.AppSettings["ImagesPath"].ToString() + image; }
         }
-
-
         public string Name
         {
             get { return _name; }
