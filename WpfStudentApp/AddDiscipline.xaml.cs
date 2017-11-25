@@ -31,11 +31,11 @@ namespace WpfStudentApp
         {
             if (String.IsNullOrWhiteSpace(DiscipName.Text))
             {
-                MessageBox.Show("Помилка", "Введіть назву предмета", MessageBoxButton.OK);
+                MessageBox.Show("Введіть назву предмета", "Помилка", MessageBoxButton.OK);
             }
-            else if (stud.GetDisciplines.Contains(DiscipName.Text))
+            else if (stud.GetDisciplines.Any(x => (String.Compare(x, DiscipName.Text, true) == 0)))
             {
-                MessageBox.Show("Помилка", "Предмет вже в базі", MessageBoxButton.OK);
+                MessageBox.Show("Предмет вже в базі", "Помилка", MessageBoxButton.OK);
             }
             else
             {
