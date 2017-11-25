@@ -55,19 +55,30 @@ namespace WpfStudentApp
         {
             try
             {
+                // if (stud.GetAllStudents.First(x => x.Name == ComboStudName.Text).Marks_M.ContainsKey(ComboDiscipName.Text) == null)
+                // {
+                //     stud.GetAllStudents.First(x => x.Name == ComboStudName.Text).Marks_M.Add(ComboDiscipName.Text, new List<short> { short.Parse(ocin.Text) });
+
+                // }
+                //else 
                 if (stud.GetAllStudents.First(x => x.Name == ComboStudName.Text).Marks_M.ContainsKey(ComboDiscipName.Text))
                 {
                     stud.GetAllStudents.First(x => x.Name == ComboStudName.Text).Marks_M[ComboDiscipName.Text].Add(short.Parse(ocin.Text));
                 }
-                else
-                {
-                    stud.GetAllStudents.First(x => x.Name == ComboStudName.Text).Marks_M.Add(ComboDiscipName.Text, new List<short> { short.Parse(ocin.Text) });
-                }
+
             }
             catch (Exception s)
             {
-                MessageBox.Show("Error", s.Message, MessageBoxButton.OK);
+               stud.GetAllStudents.First(x => x.Name == ComboStudName.Text).Marks_M = new Dictionary<string, List<short>>();
+               stud.GetAllStudents.First(x => x.Name == ComboStudName.Text).Marks_M.Add(ComboDiscipName.Text, new List<short> { short.Parse(ocin.Text) });
+
+              //  MessageBox.Show("Error", s.Message, MessageBoxButton.OK);
             }
+
+            Student temp = stud.GetAllStudents.First(x => x.Name == ComboStudName.Text);
+            stud.GetAllStudents.Remove(stud.GetAllStudents.First(x => x.Name == ComboStudName.Text));
+            stud.Add(temp);
+            stud.SaveStud();
         }
     }
 }

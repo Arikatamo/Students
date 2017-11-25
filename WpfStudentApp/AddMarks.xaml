@@ -9,9 +9,9 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="22"/>
-            <ColumnDefinition Width="231*"/>
-            <ColumnDefinition Width="16*"/>
-            <ColumnDefinition Width="231*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition/>
             <ColumnDefinition Width="22"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>

@@ -13,7 +13,7 @@ namespace DAL
         static ushort idCounter = 1;
         private string _name;
         // Ключ предмет + Ліст оцінок по тому предмету!
-        private Dictionary<string,List<short>> Marks;
+        private Dictionary<string,List<short>> Marks = new Dictionary<string, List<short>>();
         public Student()
         {
             Id = idCounter++;
@@ -22,6 +22,8 @@ namespace DAL
         public Dictionary<string, List<short>> Marks_M
         {
             get { return Marks; }
+            set { Marks = value; }
+
         }
         private string _image;
 
