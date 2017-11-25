@@ -12,13 +12,22 @@ namespace DAL
         private short _ozinka;
         private string _discipline;
 
+        private IList<short> M_ocinka;
+
+        public IList<short> M_Ocinka
+        {
+            get { return M_ocinka; }
+            set { M_ocinka = value; }
+        }
+
+
         public string Discipline
         {
             get { return _discipline; }
             set { _discipline = value; }
         }
 
-        public short Ozinka
+        public short M_Ozinka
         {
             get { return _ozinka; }
             set

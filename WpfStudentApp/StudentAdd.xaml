@@ -36,9 +36,10 @@
         <Image x:Name="image" Grid.Column="4" Grid.Row="1" Grid.RowSpan="3" Margin="5,10,5,5"/>
         <StackPanel Grid.Column="3" Grid.Row="1" Margin="6,10,6,0" Grid.RowSpan="3">
             <Label Content="Предмет" Margin="0,0,0,5" Background="Aqua"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="Предмет"/>
+            <TextBox x:Name="pred" Height="23" TextWrapping="Wrap" Text="Предмет"/>
             <Label Content="Оцінка" Margin="0,5,0,5" Background="Aqua"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="Оцінка" Typography.NumeralStyle="Lining"/>
+            <TextBox x:Name="ocin" Height="23" TextWrapping="Wrap" Text="Оцінка" Typography.NumeralStyle="Lining"/>
+            <Button x:Name="add_ocin" Content="Додати оцінку" Margin="0,5,0,0" Click="Button_Click"/>
         </StackPanel>
         <Label Content="Label" Grid.Column="2" Grid.Row="1" Grid.RowSpan="4" Background="Aqua"/>
 

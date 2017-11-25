@@ -70,12 +70,39 @@ namespace WpfStudentApp
                     /// Збереження тсудента
                     stud.Save();
                     /// Почистили блоки від данних
-                    image.Source = null;
-                    _name.Text = "";
+                    stud.GetAllStudents[stud.CountStudents].Marks_M.Clear();
                 }
                 else
                 {
                     MessageBox.Show("Помилка", "Ви не ввели дані студента", MessageBoxButton.OK);
+                }
+                if (but_add.Name == "Add_Ocin")
+                {
+                    short a;
+                    try
+                    {
+                        if (!String.IsNullOrEmpty(ocin.Name))
+                        {
+                            throw new Exception("Поле Пусте");
+                        }
+                        if (short.TryParse(ocin.Text, out a) && a < 0 || a > 100)
+                        {
+                            throw new Exception("Оцінка повинна бути від 1 - 100");
+                        }
+                        if (stud.GetAllStudents[stud.CountStudents].Marks_M[pred.Text] != null)
+                        {
+                            stud.GetAllStudents[stud.CountStudents].Marks_M[pred.Text].Add(a);
+                        }
+                        else
+                        {
+                            stud.GetAllStudents[stud.CountStudents].Marks_M.Add(pred.Text, new List<short> { a });
+                        }
+                    }
+                    catch (Exception s)
+                    {
+                        MessageBox.Show("Error", s.Message, MessageBoxButton.OK);
+                    }
+
                 }
             }
         }

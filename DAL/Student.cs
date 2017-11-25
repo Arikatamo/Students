@@ -10,11 +10,21 @@ namespace DAL
     [Serializable]
     public class Student
     {
-        private int _id;
-        private string _name;        
-        private IList<Mark> _marks;
+        private string _name;
+        // Ключ предмет + Ліст оцінок по тому предмету!
+        private Dictionary<string, List<short>> M_Marks;
+
+        public Dictionary<string, List<short>> Marks_M
+        {
+            get { return M_Marks; }
+            set { M_Marks = value; }
+        }
         private string _image;
 
+
+        /// <summary>
+        ///  Для виводу картинок по розмірам()
+        /// </summary>
         public string M_img_small
         {
             get { return ConfigurationManager.AppSettings["ImagesPath_small"].ToString() + image; }
@@ -27,6 +37,9 @@ namespace DAL
         {
             get { return ConfigurationManager.AppSettings["ImagesPath"].ToString() + image; }
         }
+
+
+
         public string Name
         {
             get { return _name; }
@@ -44,13 +57,6 @@ namespace DAL
             set { _image = value; }
         }
         public int Id { get;set; }
-
-        public IList<Mark> Marks
-        {
-            get { return _marks; }
-            set { _marks = value; }
-        }
-
 
     }
 }
