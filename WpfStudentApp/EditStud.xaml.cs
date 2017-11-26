@@ -25,6 +25,7 @@ namespace WpfStudentApp
     {
         StudentService stud;
         Student temp;
+        string[] ImageSDell;
 
         public EditStud(StudentService stud)
         {
@@ -36,7 +37,7 @@ namespace WpfStudentApp
                 ComboStudName.Items.Add(item.Name);
 
             }
-           
+
         }
 
         private void ComboStudName_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -112,13 +113,12 @@ namespace WpfStudentApp
             if(image.Source != null)
             {
                 // взято з додавання студента 
-                string[] ImageSDell = new string[3] 
-                {
+                ImageSDell = new string[3]
+    {
                     (stud.GetAllStudents[ComboStudName.SelectedIndex]).M_img_Original,
                     (stud.GetAllStudents[ComboStudName.SelectedIndex]).M_img_Middle,
                     (stud.GetAllStudents[ComboStudName.SelectedIndex]).M_img_small
-              };
- 
+ };
 
                 string img_name = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(image.Source.ToString());
                 /// Додаємо студента до колекції з Назвою оригінальної картиник
@@ -144,11 +144,28 @@ namespace WpfStudentApp
 
                 /// Збереження тсудента
                 stud.SaveStud();
+
+
+            }
+
+            this.Close();
+
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            try
+            {
                 foreach (var item in ImageSDell)
                 {
                     File.Delete(item);
                 }
 
+            }
+            catch (Exception)
+            {
+
+            
             }
 
         }
