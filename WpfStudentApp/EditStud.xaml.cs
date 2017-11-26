@@ -145,7 +145,7 @@ namespace WpfStudentApp
                 /// Збереження тсудента
                 stud.SaveStud();
 
-
+                MessageBox.Show("Успішно збережено!", "Успіх");
             }
 
             this.Close();

@@ -88,6 +88,11 @@ namespace WpfStudentApp
 
                     //видалив додавання оцінок тут 
                     // add_ocin.IsEnabled = true;
+
+
+                    MessageBox.Show("Студент успішно доданий в базу!", "Успішно");
+                    _name.Text = "Name";
+                    image.Source = null;
                 }
                 else
                 {

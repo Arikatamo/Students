@@ -79,6 +79,9 @@ namespace WpfStudentApp
             stud.GetAllStudents.Remove(stud.GetAllStudents[ComboStudName.SelectedIndex]);
             stud.Add(temp);
             stud.SaveStud();
+
+            MessageBox.Show("Оцінку успішно додано!", "Успіх");
+            ocin.Text = "";
         }
     }
 }
