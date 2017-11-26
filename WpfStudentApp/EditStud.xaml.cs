@@ -40,17 +40,15 @@ namespace WpfStudentApp
             {
                 //по вибраному студентові підтягує картинку
                 // Student temp = ComboStudName.SelectedItem as Student;
-
-                string tmpstud = ComboStudName.SelectedItem as string;
-
-                foreach (Student item in stud.GetAllStudents)
-                {
-                    if(item.Name == tmpstud)
-                    {
-
-                    image.Source = new BitmapImage(new Uri((item).M_img_Original)); 
-                    }
-                }
+                //string tmpstud = ComboStudName.SelectedItem as string;
+                image.Source = new BitmapImage(new Uri((stud.GetAllStudents[ComboStudName.SelectedIndex]).M_img_Original));
+                //foreach (Student item in stud.GetAllStudents)
+                //{
+                //    if(item.Name == tmpstud)
+                //    {
+                //    image.Source = new BitmapImage(new Uri((item).M_img_Original)); 
+                //    }
+                //}
 
 
 
