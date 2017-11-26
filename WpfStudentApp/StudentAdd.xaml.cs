@@ -96,7 +96,7 @@ namespace WpfStudentApp
                 {
                     try
                     {
-                        if (pred.SelectedIndex == 1)
+                        if (pred.SelectedIndex == -1)
                         {
                             throw new Exception("Оберіть або додайте предмет");
                         }
