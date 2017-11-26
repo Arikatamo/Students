@@ -14,6 +14,20 @@ namespace DAL
         private string _name;
         // Ключ предмет + Ліст оцінок по тому предмету!
         private Dictionary<string,List<short>> Marks = new Dictionary<string, List<short>>();
+        public Dictionary<string, string> GetMarksForDataGrid()
+        {
+            Dictionary<string, string> temp = new Dictionary<string, string>();
+            foreach (var item in Marks)
+            {
+                string it = "";
+                foreach (short i in item.Value)
+                {
+                    it += i + " ";
+                }
+                temp.Add(item.Key, it);
+            }
+            return temp;
+        }
         public string GetV(string key)
         {
             return Marks[key].ToString();
