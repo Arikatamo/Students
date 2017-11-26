@@ -39,7 +39,9 @@ namespace WpfStudentApp
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             ShowStud stud = new ShowStud(studService);
+            
             stud.ShowDialog();
+            if (stud.DialogResult==true &&  stud.Tag.ToString() == "refresh") { stud.Tag = ""; Button_Click_1(null, null); };
         }
 
         //додати оцінки
@@ -60,6 +62,9 @@ namespace WpfStudentApp
         {
             EditStud editStud = new EditStud(studService);
             editStud.ShowDialog();
+
+          
+
 
         }
     }
