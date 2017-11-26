@@ -33,7 +33,8 @@ namespace WpfStudentApp
             Discipline.IsReadOnly = true;
             StudentList.ItemsSource = stud.GetAllStudents;
             StudentList.SelectionMode = DataGridSelectionMode.Single;
-            
+            Disc.Content = "Предмет";
+
         }
 
         private void StudentList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -64,18 +65,24 @@ namespace WpfStudentApp
 
         private void Discipline_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
             //MessageBox.Show(Discipline.SelectedIndex.ToString());
             if (Discipline.SelectedIndex >= 0)
             {
+                var a = (KeyValuePair<string,List<short>>)Discipline.Items[Discipline.SelectedIndex]; 
 
-               var a = (KeyValuePair<string,List<short>>)Discipline.Items[Discipline.SelectedIndex]; 
                 Disc.Content = a.Key;
+                dataOcin.Content = null;
                 foreach (var item in a.Value)
                 {
                     dataOcin.Content += " " + item + " ";
                 }
                
 
+            }
+            else
+            {
+                Disc.Content = "Предмет";
             }
         }
     }
