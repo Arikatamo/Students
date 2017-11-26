@@ -55,18 +55,18 @@ namespace WpfStudentApp
                 //переврка на наявність студента в списку
                 if (!String.IsNullOrEmpty(_name.Text) && image.Source != null && _name.Text != "Name")
                 {
-                    foreach (Student st in stud.GetAllStudents)
-                    {
-                        if (String.Compare(st.Name, _name.Text, true) == 0)
-                        {
-                            MessageBox.Show("Помилка", "Такий студент вже існує. Змініть ім'я", MessageBoxButton.OK);
-                            return;
-                        }
-                    } 
+                    //foreach (Student st in stud.GetAllStudents)
+                    //{
+                    //    if (String.Compare(st.Name, _name.Text, true) == 0)
+                    //    {
+                    //        MessageBox.Show("Помилка", "Такий студент вже існує. Змініть ім'я", MessageBoxButton.OK);
+                    //        return;
+                    //    }
+                    //} 
                     ///Додаємо назву картинки + її розширення з оригіналу
                     string img_name = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(image.Source.ToString());
                     /// Додаємо студента до колекції з Назвою оригінальної картиник
-                    stud.Add(new Student() { Name = _name.Text, image = img_name });
+                    stud.Add(new Student() { Name = _name.Text, image = img_name, Id = Guid.NewGuid().ToString() });
                     /// Створюємо  Бітмап оригінальної картинки
                     Bitmap origin = new Bitmap(image.Source.ToString().Trim(@"file://".ToCharArray()));
                     ///Створюємо картинки під різні розміри

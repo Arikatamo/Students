@@ -40,8 +40,10 @@ namespace WpfStudentApp
 
         private void StudentList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Онулення Колекції(без буде крашитись)
+            // Онулення Колекції(без буде крашитись) і лейблів з оцінками
             Discipline.ItemsSource = null;
+            dataOcin.Content = null;
+            AvarageOcin.Content = null;
             //  Discipline.Items.Clear();
             if ((StudentList.SelectedItem as Student).Marks_M.Count == 0)
             {
