@@ -17,6 +17,7 @@ using System.Data;
 
 namespace WpfStudentApp
 {
+
     /// <summary>
     /// Interaction logic for ShowStud.xaml
     /// </summary>
@@ -48,13 +49,32 @@ namespace WpfStudentApp
                 {
                     // Додає соурс предметів в ДатаГрід
                     Discipline.ItemsSource = temp.Marks_M;
+
+                    // Discipline.CurrentColumn.Header;
                     //foreach (string item in temp.Marks_M.Keys.ToArray())
                     //{
-                    //    MessageBox.Show(item);
+                    //  
                     //    Discipline.Items.Add(item.ToString());
                     //}
 
                 }
+
+            }
+        }
+
+        private void Discipline_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //MessageBox.Show(Discipline.SelectedIndex.ToString());
+            if (Discipline.SelectedIndex >= 0)
+            {
+
+               var a = (KeyValuePair<string,List<short>>)Discipline.Items[Discipline.SelectedIndex]; 
+                Disc.Content = a.Key;
+                foreach (var item in a.Value)
+                {
+                    dataOcin.Content += " " + item + " ";
+                }
+               
 
             }
         }

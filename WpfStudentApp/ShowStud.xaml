@@ -12,7 +12,8 @@
             <RowDefinition Height="9*"/>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="91*"/>
-            <RowDefinition Height="68*"/>
+            <RowDefinition Height="33"/>
+            <RowDefinition Height="57*"/>
             <RowDefinition Height="26"/>
             <RowDefinition Height="9"/>
         </Grid.RowDefinitions>
@@ -22,7 +23,7 @@
             <ColumnDefinition Width="351*"/>
             <ColumnDefinition Width="277*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="StudentList" Grid.RowSpan="6" HorizontalGridLinesBrush="Black" Grid.ColumnSpan="2" SelectionChanged="StudentList_SelectionChanged" IsReadOnly="True">
+        <DataGrid x:Name="StudentList" Grid.RowSpan="7" HorizontalGridLinesBrush="Black" Grid.ColumnSpan="2" SelectionChanged="StudentList_SelectionChanged" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
@@ -60,19 +61,21 @@
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
         <Image Name="FullImage" Grid.Column="2" Grid.Row="2"/>
-        <DataGrid x:Name="Discipline" Grid.Column="3" Grid.Row="2" Grid.RowSpan="2">
+        <DataGrid x:Name="Discipline" Grid.Column="3" Grid.Row="2" SelectionChanged="Discipline_SelectionChanged">
             <!--<DataGrid.Columns>
                 <DataGridTextColumn Header="Предметы" Binding="{Binding Marks.Keys}"/>
             </DataGrid.Columns>-->
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
                     <DockPanel x:Name="DockPan" Background="GhostWhite">
-                    <TextBlock Text="Оцінки: " FontWeight="Bold" />
-                        <TextBlock Text="{Binding GetV}" Grid.Column="1" />
+                        <TextBlock Text="Оцінки: " FontWeight="Bold" />
+                        <TextBlock Text="{Binding Discipline.Items[0].Row[1]}" Grid.Column="1" />
                     </DockPanel>
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
+        <Label x:Name="dataOcin" Grid.Column="2" Grid.Row="4"/>
+        <Label x:Name="Disc" Grid.Column="2" Grid.Row="3"/>
 
     </Grid>
 </Window>
