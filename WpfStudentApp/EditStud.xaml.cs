@@ -107,6 +107,8 @@ namespace WpfStudentApp
 
         private void save_change_Click(object sender, RoutedEventArgs e)
         {
+            if (ComboStudName.SelectedIndex>=0)
+            {
             if (!(String.IsNullOrEmpty(_name.Text)) && _name.Text.Length>3 && _name.Text!="New Name")
                 temp.Name = _name.Text;
             
@@ -118,7 +120,7 @@ namespace WpfStudentApp
                     (stud.GetAllStudents[ComboStudName.SelectedIndex]).M_img_Original,
                     (stud.GetAllStudents[ComboStudName.SelectedIndex]).M_img_Middle,
                     (stud.GetAllStudents[ComboStudName.SelectedIndex]).M_img_small
- };
+    };
 
                 string img_name = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(image.Source.ToString());
                 /// Додаємо студента до колекції з Назвою оригінальної картиник
@@ -149,7 +151,11 @@ namespace WpfStudentApp
             }
 
             this.Close();
-
+            }
+            else
+            {
+                MessageBox.Show("No selected Student");
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
