@@ -65,12 +65,12 @@ namespace WpfStudentApp
                 {
                     stud.GetAllStudents.First(x => x.Name == ComboStudName.Text).Marks_M[ComboDiscipName.Text].Add(short.Parse(ocin.Text));
                 }
-
+               // stud.GetAllStudents.First(x => x.Name == ComboStudName.Text).Marks_M = new Dictionary<string, List<short>>();
+                stud.GetAllStudents.First(x => x.Name == ComboStudName.Text).Marks_M.Add(ComboDiscipName.Text, new List<short> { short.Parse(ocin.Text) });
             }
             catch (Exception s)
             {
-               stud.GetAllStudents.First(x => x.Name == ComboStudName.Text).Marks_M = new Dictionary<string, List<short>>();
-               stud.GetAllStudents.First(x => x.Name == ComboStudName.Text).Marks_M.Add(ComboDiscipName.Text, new List<short> { short.Parse(ocin.Text) });
+     
 
               //  MessageBox.Show("Error", s.Message, MessageBoxButton.OK);
             }
