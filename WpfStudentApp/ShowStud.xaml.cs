@@ -52,6 +52,7 @@ namespace WpfStudentApp
             else
             {
                 Discipline.Visibility = Visibility.Visible;
+
             }
             if (StudentList.SelectedIndex < StudentList.Items.Count)
             {
@@ -62,7 +63,9 @@ namespace WpfStudentApp
                     // Додає соурс предметів в ДатаГрід
                     Discipline.ItemsSource = temp.Marks_M;
                 }
-
+                //Приховав вивід колонки (Колекції)
+                Discipline.Columns[1].Visibility = Visibility.Hidden;
+                Discipline.Columns[0].Header = "Предмет";
             }
         }
 
