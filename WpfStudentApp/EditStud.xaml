@@ -19,12 +19,15 @@
             <RowDefinition Height="37"/>
             <RowDefinition Height="33"/>
             <RowDefinition Height="31.191"/>
-            <RowDefinition Height="105.809"/>
+            <RowDefinition Height="39.179"/>
+            <RowDefinition Height="66.821"/>
             <RowDefinition Height="10"/>
+            <RowDefinition Height="58*"/>
+            <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
 
 
-        <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,10,10,0" Grid.RowSpan="4">
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,11,10,5" Grid.RowSpan="6">
             <Label Content="Студент" Background="Lavender" HorizontalContentAlignment="Center" Margin="10,0,0,0"/>
             <ComboBox  x:Name="ComboStudName" Height="23" Foreground="Black" Margin="10,5,0,0" BorderBrush="White" SelectionChanged="ComboStudName_SelectionChanged">
                 <ComboBox.Background>
@@ -35,8 +38,13 @@
                 </ComboBox.Background>
             </ComboBox>
         </StackPanel>
-        <Image x:Name="image" Grid.Column="1" Grid.Row="3" Margin="0,10,10,-49" Grid.RowSpan="3" HorizontalAlignment="Right" Width="322"/>
-        <Button x:Name="add_image" Grid.Column="3" Grid.Row="1" Content="Заміна картинки" Margin="0,5,0,0" Click="add_image_Click" />
+        <Image x:Name="image" Grid.Column="1" Grid.Row="3" Margin="0,13,10,3" Grid.RowSpan="5" HorizontalAlignment="Right" Width="322"/>
+        <Button x:Name="add_image" Grid.Column="3" Grid.Row="1" Content="Заміна картинки" Margin="0,6,0,31" Click="add_image_Click" Grid.RowSpan="2"  />
+        <Label Content="Нове імя"  Grid.Column="3" Grid.Row="3"  Background="Lavender" HorizontalContentAlignment="Center"/>
+        <TextBox x:Name="_name"  Grid.Column="3" Grid.Row="4" TextWrapping="Wrap" Text="New Name" VerticalContentAlignment="Center" Foreground="LightGray" GotFocus="_name_GotFocus" LostFocus="_name_LostFocus" />
+
+
+        <Button x:Name="save_change" Grid.Column="3" Grid.Row="7" Content="Зберегти зміни" Grid.RowSpan="1" Click="save_change_Click"  />
 
     </Grid>
 </Window>
