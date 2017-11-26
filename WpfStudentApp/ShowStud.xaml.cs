@@ -110,7 +110,6 @@ namespace WpfStudentApp
             stud.DelStudItem(_studDel);
 
             stud.SaveStud();
-
             MessageBox.Show("Студента успішно видалено!","Видалення!");
               
 
