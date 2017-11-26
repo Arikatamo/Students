@@ -83,6 +83,13 @@ namespace DAL
             }
         }
 
+        //доавив метод видалення студента
+        public void DelStudItem(Student item)
+        {
+
+            _students.Remove(item);
+
+        }
 
         public IList<Student> GetAllStudents
         {
