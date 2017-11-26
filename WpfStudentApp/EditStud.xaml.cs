@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DAL;
+using Microsoft.Win32;
+
 namespace WpfStudentApp
 {
     /// <summary>
@@ -39,7 +41,7 @@ namespace WpfStudentApp
             if(ComboStudName.SelectedIndex!=-1)
             {
                 //по вибраному студентові підтягує картинку
-                // Student temp = ComboStudName.SelectedItem as Student;
+               
 
                 string tmpstud = ComboStudName.SelectedItem as string;
 
@@ -48,7 +50,7 @@ namespace WpfStudentApp
                     if(item.Name == tmpstud)
                     {
 
-                    image.Source = new BitmapImage(new Uri((item).M_img_Original)); 
+                    image.Source = new BitmapImage(new Uri((item).M_img_Middle)); 
                     }
                 }
 
@@ -61,6 +63,19 @@ namespace WpfStudentApp
 
 
 
+        }
+
+        private void add_image_Click(object sender, RoutedEventArgs e)
+        {
+
+            OpenFileDialog images;
+            images = new OpenFileDialog();
+            images.Filter = @"All Img|*.jpg;*.jpeg;*.png";
+            // При додаванні картинки вона виводиться в блоці image
+            if (images.ShowDialog() == true)
+            {
+                image.Source = new BitmapImage(new Uri(images.FileName));
+            }
         }
     }
 }
