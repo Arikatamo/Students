@@ -55,5 +55,12 @@ namespace WpfStudentApp
             AddDiscipline addDiscipline = new AddDiscipline(studService);
             addDiscipline.ShowDialog();
         }
+
+        private void btn_editstud_Click(object sender, RoutedEventArgs e)
+        {
+            EditStud editStud = new EditStud(studService);
+            editStud.ShowDialog();
+
+        }
     }
 }

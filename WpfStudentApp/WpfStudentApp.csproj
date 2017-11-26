@@ -66,6 +66,9 @@
       <DependentUpon>AddMarks.xaml</DependentUpon>
     </Compile>
     <Compile Include="DialogResult.cs" />
+    <Compile Include="EditStud.xaml.cs">
+      <DependentUpon>EditStud.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ShowStud.xaml.cs">
       <DependentUpon>ShowStud.xaml</DependentUpon>
     </Compile>
@@ -77,6 +80,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddMarks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditStud.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -30,6 +30,7 @@
                 <!--<Button Content="Завантажити Студентів" Margin="5,0,5,5"/>-->
                 <Button Content="Показати Студентів" Margin="5,0,5,5" Click="Button_Click_1"/>
                 <Button Content="Дисципліни" Margin="5,0,5,5" Click="Button_Click_3"/>
+                <Button x:Name="btn_editstud" Content="Редагувати студента" Margin="5,0,5,5" Click="btn_editstud_Click"/>
 
             </StackPanel>
         </Grid>
