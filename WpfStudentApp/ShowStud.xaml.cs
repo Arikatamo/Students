@@ -32,6 +32,7 @@ namespace WpfStudentApp
             //Discipline.AutoGenerateColumns = false;
             Discipline.IsReadOnly = true;
             StudentList.ItemsSource = stud.GetAllStudents;
+            Discipline.Visibility = Visibility.Hidden;
             StudentList.SelectionMode = DataGridSelectionMode.Single;
             Disc.Content = "Предмет";
 
@@ -41,7 +42,15 @@ namespace WpfStudentApp
         {
             // Онулення Колекції(без буде крашитись)
             Discipline.ItemsSource = null;
-          //  Discipline.Items.Clear();
+            //  Discipline.Items.Clear();
+            if ((StudentList.SelectedItem as Student).Marks_M.Count == 0)
+            {
+                Discipline.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                Discipline.Visibility = Visibility.Visible;
+            }
             if (StudentList.SelectedIndex < StudentList.Items.Count)
             {
                 Student temp = StudentList.SelectedItem as Student;
@@ -50,14 +59,6 @@ namespace WpfStudentApp
                 {
                     // Додає соурс предметів в ДатаГрід
                     Discipline.ItemsSource = temp.Marks_M;
-
-                    // Discipline.CurrentColumn.Header;
-                    //foreach (string item in temp.Marks_M.Keys.ToArray())
-                    //{
-                    //  
-                    //    Discipline.Items.Add(item.ToString());
-                    //}
-
                 }
 
             }
@@ -73,11 +74,13 @@ namespace WpfStudentApp
 
                 Disc.Content = a.Key;
                 dataOcin.Content = null;
+                int allOcin = 0;
                 foreach (var item in a.Value)
                 {
+                    allOcin += item;
                     dataOcin.Content += " " + item + " ";
                 }
-               
+                AvarageOcin.Content = "Середня: " + (allOcin / a.Value.Count);
 
             }
             else

@@ -9,11 +9,12 @@
         Title="ShowStud" Height="600" Width="1148.5">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="9*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="91*"/>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="273*"/>
             <RowDefinition Height="33"/>
-            <RowDefinition Height="57*"/>
+            <RowDefinition Height="127*"/>
+            <RowDefinition Height="44*"/>
             <RowDefinition Height="26"/>
             <RowDefinition Height="9"/>
         </Grid.RowDefinitions>
@@ -23,7 +24,7 @@
             <ColumnDefinition Width="351*"/>
             <ColumnDefinition Width="277*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="StudentList" Grid.RowSpan="7" HorizontalGridLinesBrush="Black" Grid.ColumnSpan="2" SelectionChanged="StudentList_SelectionChanged" IsReadOnly="True">
+        <DataGrid x:Name="StudentList" Grid.RowSpan="8" HorizontalGridLinesBrush="Black" Grid.ColumnSpan="2" SelectionChanged="StudentList_SelectionChanged" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
@@ -74,8 +75,14 @@
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>-->
         </DataGrid>
-        <Label x:Name="dataOcin" Grid.Column="2" Grid.Row="4" Margin="5,5,5,5" Background="LightGray"/>
+        <Label x:Name="dataOcin" Grid.Column="2" Grid.Row="4" Background="LightGray"  Margin="5,5,5,5"/>
         <Label x:Name="Disc" Grid.Column="2" Grid.Row="3" Background="Aqua" Margin="5,5,5,0"/>
+        <Label x:Name="AvarageOcin" Content="" Grid.Column="2" Grid.Row="5" Margin="5,5,5,5" Background="LightCyan"/>
+        <Label Margin="5,0,0,5" Content="Студент" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="#FF76FFEC" FontSize="22" FontFamily="SimSun" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" >
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="10"/>
+            </Label.Effect>
+        </Label>
 
     </Grid>
 </Window>
