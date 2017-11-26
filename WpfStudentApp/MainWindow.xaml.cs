@@ -41,7 +41,7 @@ namespace WpfStudentApp
             ShowStud stud = new ShowStud(studService);
             
             stud.ShowDialog();
-            if (stud.DialogResult==true &&  stud.Tag.ToString() == "refresh") { stud.Tag = ""; Button_Click_1(null, null); };
+           // if (stud.DialogResult==true &&  stud.Tag.ToString() == "refresh") { stud.Tag = ""; Button_Click_1(null, null); };
         }
 
         //додати оцінки

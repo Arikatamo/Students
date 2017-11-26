@@ -120,7 +120,7 @@ namespace WpfStudentApp
                     (stud.GetAllStudents[ComboStudName.SelectedIndex]).M_img_Original,
                     (stud.GetAllStudents[ComboStudName.SelectedIndex]).M_img_Middle,
                     (stud.GetAllStudents[ComboStudName.SelectedIndex]).M_img_small
- };
+    };
 
                 string img_name = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(image.Source.ToString());
                 /// Додаємо студента до колекції з Назвою оригінальної картиник

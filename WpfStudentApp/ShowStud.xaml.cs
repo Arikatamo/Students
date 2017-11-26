@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using DAL;
 using System.Drawing;
 using System.Data;
-
+using System.IO;
 namespace WpfStudentApp
 {
 
@@ -29,7 +29,6 @@ namespace WpfStudentApp
             InitializeComponent();
             stud = a;
             StudentList.AutoGenerateColumns = false;
-            //Discipline.AutoGenerateColumns = false;
             Discipline.IsReadOnly = true;
             StudentList.ItemsSource = stud.GetAllStudents;
             Discipline.Visibility = Visibility.Hidden;
@@ -102,25 +101,41 @@ namespace WpfStudentApp
 
         private void btnDel_Click(object sender, RoutedEventArgs e)
         {
+            string[] ImageSDell = new string[3]
+        {
+                    (stud.GetAllStudents[StudentList.SelectedIndex]).M_img_Original,
+                    (stud.GetAllStudents[StudentList.SelectedIndex]).M_img_Middle,
+                    (stud.GetAllStudents[StudentList.SelectedIndex]).M_img_small
+        };
             if (StudentList.SelectedItem == null) return;
 
             var result = MessageBox.Show("Видійсно бажаєте видалити даного студента?", "Підтвердіть видалення!",MessageBoxButton.YesNo);
 
             if(result == MessageBoxResult.Yes)  //видалення студента
             {
-            Student _studDel = StudentList.SelectedItem as Student;
-            stud.DelStudItem(_studDel);
-
+            stud.GetAllStudents.RemoveAt(StudentList.SelectedIndex);
             stud.SaveStud();
-            MessageBox.Show("Студента успішно видалено!","Видалення!");
 
-                this.Tag = "refresh";
-                this.DialogResult = true;
+            /// Оновлення Ресурсів ДатаГрід
+            StudentList.ItemsSource = null;
+            StudentList.ItemsSource = stud.GetAllStudents;
+            //Знімаємо картинку з ФулІмаге
+            FullImage.Source = null;
+            MessageBox.Show("Студента успішно видалено!", "Видалення!");
+
+
+
+
+                //this.Tag = "refresh";
+                //this.DialogResult = true;
 
             }
+            //Видалення картинок студента
+            //foreach (var item in ImageSDell)
+            //{
+            //    File.Delete(item);
+            //}
 
-
-           
 
         }
     }
