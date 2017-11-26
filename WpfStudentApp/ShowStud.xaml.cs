@@ -45,6 +45,7 @@ namespace WpfStudentApp
             dataOcin.Content = null;
             AvarageOcin.Content = null;
             //  Discipline.Items.Clear();
+
             if ((StudentList.SelectedItem as Student).Marks_M.Count == 0)
             {
                 Discipline.Visibility = Visibility.Hidden;
@@ -90,12 +91,36 @@ namespace WpfStudentApp
                     dataOcin.Content += " " + item + " ";
                 }
                 AvarageOcin.Content = "Середня: " + (allOcin / a.Value.Count);
-
             }
             else
             {
                 Disc.Content = "Предмет";
             }
+        }
+
+        private void btnDel_Click(object sender, RoutedEventArgs e)
+        {
+            if (StudentList.SelectedItem == null) return;
+
+            var result = MessageBox.Show("Видійсно бажаєте видалити даного студента?", "Підтвердіть видалення!",MessageBoxButton.YesNo);
+
+            if(result == MessageBoxResult.Yes)  //видалення студента
+            {
+            Student _studDel = StudentList.SelectedItem as Student;
+            stud.DelStudItem(_studDel);
+
+            stud.SaveStud();
+
+            MessageBox.Show("Студента успішно видалено!","Видалення!");
+              
+
+            
+
+            }
+
+
+           
+
         }
     }
 }
