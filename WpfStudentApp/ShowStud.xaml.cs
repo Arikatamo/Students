@@ -63,9 +63,13 @@ namespace WpfStudentApp
                     // Додає соурс предметів в ДатаГрід
                     Discipline.ItemsSource = temp.Marks_M;
                 }
+                if (Discipline.Items.Count >0)
+                {
+                    Discipline.Columns[1].Visibility = Visibility.Hidden;
+                    Discipline.Columns[0].Header = "Предмет";
+                }
                 //Приховав вивід колонки (Колекції)
-                Discipline.Columns[1].Visibility = Visibility.Hidden;
-                Discipline.Columns[0].Header = "Предмет";
+
             }
         }
 

@@ -15,7 +15,7 @@ using DAL;
 using Microsoft.Win32;
 using System.Drawing;
 using System.Configuration;
-
+using System.IO;
 namespace WpfStudentApp
 {
     /// <summary>
@@ -74,7 +74,7 @@ namespace WpfStudentApp
             OpenFileDialog openimages;
           
                 openimages = new OpenFileDialog();
-            openimages.Filter = @"All Img|*.jpg;*.jpeg;*.png";
+                openimages.Filter = @"All Img|*.jpg;*.jpeg;*.png";
                 // При додаванні картинки вона виводиться в блоці image
                 if (openimages.ShowDialog() == true)
                 {
@@ -112,14 +112,20 @@ namespace WpfStudentApp
             if(image.Source != null)
             {
                 // взято з додавання студента 
-                string img_name = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(image.Source.ToString());
+                string[] ImageSDell = new string[3] 
+                {
+                    (stud.GetAllStudents[ComboStudName.SelectedIndex]).M_img_Original,
+                    (stud.GetAllStudents[ComboStudName.SelectedIndex]).M_img_Middle,
+                    (stud.GetAllStudents[ComboStudName.SelectedIndex]).M_img_small
+              };
+ 
 
+                string img_name = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(image.Source.ToString());
                 /// Додаємо студента до колекції з Назвою оригінальної картиник
                 //  stud.Add(new Student() { Name = _name.Text, image = img_name, Id = Guid.NewGuid().ToString() });
                 /// Створюємо  Бітмап оригінальної картинки
                 /// 
                 temp.image = img_name;
-                
                 Bitmap origin = new Bitmap(image.Source.ToString().Trim(@"file://".ToCharArray()));
                 ///Створюємо картинки під різні розміри
                 ///
@@ -133,11 +139,15 @@ namespace WpfStudentApp
                 /// Оригінал
                 Bitmap s = new Bitmap(image.Source.ToString().Trim(@"file://".ToCharArray()));
                 origin.Save(ConfigurationManager.AppSettings["ImagesPath"].ToString() + img_name);
-               
-                
+                DirectoryInfo a = new DirectoryInfo("ImagesPath_small");
+
+
                 /// Збереження тсудента
                 stud.SaveStud();
-
+                foreach (var item in ImageSDell)
+                {
+                    File.Delete(item);
+                }
 
             }
 
