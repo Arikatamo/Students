@@ -28,10 +28,11 @@ namespace WpfStudentApp
         {
             InitializeComponent();
             stud = a;
-            foreach (string item in stud.GetDisciplines)
-            {
-                pred.Items.Add(item);
-            }
+            //видалив додавання оцінок тут 
+            //foreach (string item in stud.GetDisciplines)
+            //{
+            //    pred.Items.Add(item);
+            //}
             }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -83,42 +84,47 @@ namespace WpfStudentApp
                     /// Збереження тсудента
                     stud.SaveStud();
                     /// Почистили блоки від данних
-                   // stud.GetAllStudents[stud.CountStudents].Marks_M.Clear();
-                    add_ocin.IsEnabled = true;
+                    // stud.GetAllStudents[stud.CountStudents].Marks_M.Clear();
+
+                    //видалив додавання оцінок тут 
+                    // add_ocin.IsEnabled = true;
                 }
                 else
                 {
                     MessageBox.Show("Помилка", "Ви не ввели дані студента", MessageBoxButton.OK);
                 }
-                ///// Додавання оцінок до вже доданого Юзера... без Перевірок чи доданий юзер, іначе буде просто додавати до останнього пацана в в Діктіонарі!!
+               
+                //видалив додавання оцінок тут неробить 
+                
+            ///// Додавання оцінок до вже доданого Юзера... без Перевірок чи доданий юзер, іначе буде просто додавати до останнього пацана в в Діктіонарі!!
                 ///// спробуй перевірити на роботоспособность і якусь перевірку, щоб кнопка додавання оцінок не появлялася поки не нажме кнопку додати студента!
-                if (but_add.Name == "Add_Ocin")
-                {
-                    try
-                    {
-                        if (pred.SelectedIndex == -1)
-                        {
-                            throw new Exception("Оберіть або додайте предмет");
-                        }
-                        if (short.TryParse(ocin.Text, out short a) && a < 0 || a > 100)
-                        {
-                            throw new Exception("Оцінка повинна бути від 1 - 100");
-                        }
-                        if (stud.GetAllStudents[stud.CountStudents].Marks_M.ContainsKey(pred.Text))
-                        {
-                            stud.GetAllStudents[stud.CountStudents].Marks_M[pred.Text].Add(a);
-                        }
-                        else
-                        {
-                            stud.GetAllStudents[stud.CountStudents].Marks_M.Add(pred.Text, new List<short> { a });
-                        }
-                    }
-                    catch (Exception s)
-                    {
-                        MessageBox.Show("Error", s.Message, MessageBoxButton.OK);
-                    }
+                //if (but_add.Name == "Add_Ocin")
+                //{
+                //    try
+                //    {
+                //        if (pred.SelectedIndex == -1)
+                //        {
+                //            throw new Exception("Оберіть або додайте предмет");
+                //        }
+                //        if (short.TryParse(ocin.Text, out short a) && a < 0 || a > 100)
+                //        {
+                //            throw new Exception("Оцінка повинна бути від 1 - 100");
+                //        }
+                //        if (stud.GetAllStudents[stud.CountStudents].Marks_M.ContainsKey(pred.Text))
+                //        {
+                //            stud.GetAllStudents[stud.CountStudents].Marks_M[pred.Text].Add(a);
+                //        }
+                //        else
+                //        {
+                //            stud.GetAllStudents[stud.CountStudents].Marks_M.Add(pred.Text, new List<short> { a });
+                //        }
+                //    }
+                //    catch (Exception s)
+                //    {
+                //        MessageBox.Show("Error", s.Message, MessageBoxButton.OK);
+                //    }
 
-                }
+                //}
             }
         }
 
