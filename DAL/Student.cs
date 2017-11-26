@@ -10,7 +10,7 @@ namespace DAL
     [Serializable]
     public class Student
     {
-        static ushort idCounter = 1;
+        private string idCounter;
         private string _name;
         // Ключ предмет + Ліст оцінок по тому предмету!
         private Dictionary<string,List<short>> Marks = new Dictionary<string, List<short>>();
@@ -28,14 +28,9 @@ namespace DAL
             }
             return temp;
         }
-        public string GetV(string key)
-        {
-            return Marks[key].ToString();
-
-        }
         public Student()
         {
-            Id = idCounter++;
+            idCounter = Guid.NewGuid().ToString();
         }
 
         public Dictionary<string, List<short>> Marks_M
@@ -81,7 +76,10 @@ namespace DAL
             get { return  _image; }
             set { _image = value; }
         }
-        public int Id { get;set; }
+        public string Id {
+            get { return idCounter; }
+            set { idCounter = value; }
+        }
 
     }
 }

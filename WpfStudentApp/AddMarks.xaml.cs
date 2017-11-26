@@ -25,13 +25,11 @@ namespace WpfStudentApp
         StudentService stud;
         public AddMarks(StudentService stud)
         {
-
             InitializeComponent();
             this.stud = stud;
             foreach (Student item in stud.GetAllStudents)
             {
                 ComboStudName.Items.Add(item.Name);
-
             }
             foreach (string item in stud.GetDisciplines)
             {
@@ -61,22 +59,22 @@ namespace WpfStudentApp
 
                 // }
                 //else 
-                if (stud.GetAllStudents.First(x => x.Name == ComboStudName.Text).Marks_M.ContainsKey(ComboDiscipName.Text))
+                if (stud.GetAllStudents[ComboStudName.SelectedIndex].Marks_M.ContainsKey(ComboDiscipName.Text))
                 {
-                    stud.GetAllStudents.First(x => x.Name == ComboStudName.Text).Marks_M[ComboDiscipName.Text].Add(short.Parse(ocin.Text));
+                    stud.GetAllStudents[ComboStudName.SelectedIndex].Marks_M[ComboDiscipName.Text].Add(short.Parse(ocin.Text));
                 }
                // stud.GetAllStudents.First(x => x.Name == ComboStudName.Text).Marks_M = new Dictionary<string, List<short>>();
-                stud.GetAllStudents.First(x => x.Name == ComboStudName.Text).Marks_M.Add(ComboDiscipName.Text, new List<short> { short.Parse(ocin.Text) });
+                stud.GetAllStudents[ComboStudName.SelectedIndex].Marks_M.Add(ComboDiscipName.Text, new List<short> { short.Parse(ocin.Text) });
             }
             catch (Exception s)
             {
      
 
-              //  MessageBox.Show("Error", s.Message, MessageBoxButton.OK);
+             
             }
 
-            Student temp = stud.GetAllStudents.First(x => x.Name == ComboStudName.Text);
-            stud.GetAllStudents.Remove(stud.GetAllStudents.First(x => x.Name == ComboStudName.Text));
+            Student temp = stud.GetAllStudents[ComboStudName.SelectedIndex];
+            stud.GetAllStudents.Remove(stud.GetAllStudents[ComboStudName.SelectedIndex]);
             stud.Add(temp);
             stud.SaveStud();
         }
