@@ -31,7 +31,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                <!--<DataGridTextColumn Header="Id" Binding="{Binding Id}"/>-->
                 <DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
             </DataGrid.Columns>
 
@@ -60,10 +60,18 @@
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
         <Image Name="FullImage" Grid.Column="2" Grid.Row="2"/>
-        <DataGrid x:Name="Discipline" Grid.Column="3" Grid.Row="2">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Предметы"/>
-            </DataGrid.Columns>
+        <DataGrid x:Name="Discipline" Grid.Column="3" Grid.Row="2" Grid.RowSpan="2">
+            <!--<DataGrid.Columns>
+                <DataGridTextColumn Header="Предметы" Binding="{Binding Marks.Keys}"/>
+            </DataGrid.Columns>-->
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <DockPanel x:Name="DockPan" Background="GhostWhite">
+                    <TextBlock Text="Оцінки: " FontWeight="Bold" />
+                        <TextBlock Text="{Binding GetV}" Grid.Column="1" />
+                    </DockPanel>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
         </DataGrid>
 
     </Grid>

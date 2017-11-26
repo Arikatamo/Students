@@ -28,7 +28,8 @@ namespace WpfStudentApp
             InitializeComponent();
             stud = a;
             StudentList.AutoGenerateColumns = false;
-            Discipline.AutoGenerateColumns = false;
+            //Discipline.AutoGenerateColumns = false;
+            Discipline.IsReadOnly = true;
             StudentList.ItemsSource = stud.GetAllStudents;
             StudentList.SelectionMode = DataGridSelectionMode.Single;
             
@@ -36,19 +37,22 @@ namespace WpfStudentApp
 
         private void StudentList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-            Discipline.Items.Clear();
+            // Онулення Колекції(без буде крашитись)
+            Discipline.ItemsSource = null;
+          //  Discipline.Items.Clear();
             if (StudentList.SelectedIndex < StudentList.Items.Count)
             {
                 Student temp = StudentList.SelectedItem as Student;
                 FullImage.Source = new BitmapImage(new Uri((temp).M_img_Original));
                 if (temp.Marks_M != null)
                 {
-                    Dictionary<string, List<short>> temp2 = temp.Marks_M;
-                    foreach (var item in temp2.Keys)
-                    {
-                        Discipline.Items.Add(item.ToString());
-                    }
+                    // Додає соурс предметів в ДатаГрід
+                    Discipline.ItemsSource = temp.Marks_M;
+                    //foreach (string item in temp.Marks_M.Keys.ToArray())
+                    //{
+                    //    MessageBox.Show(item);
+                    //    Discipline.Items.Add(item.ToString());
+                    //}
 
                 }
 

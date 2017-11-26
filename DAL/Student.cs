@@ -14,6 +14,11 @@ namespace DAL
         private string _name;
         // Ключ предмет + Ліст оцінок по тому предмету!
         private Dictionary<string,List<short>> Marks = new Dictionary<string, List<short>>();
+        public string GetV(string key)
+        {
+            return Marks[key].ToString();
+
+        }
         public Student()
         {
             Id = idCounter++;
