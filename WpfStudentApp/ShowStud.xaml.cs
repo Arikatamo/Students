@@ -45,6 +45,8 @@ namespace WpfStudentApp
             dataOcin.Content = null;
             AvarageOcin.Content = null;
             //  Discipline.Items.Clear();
+            if (StudentList.SelectedIndex == -1) return;
+
 
             if ((StudentList.SelectedItem as Student).Marks_M.Count == 0)
             {
@@ -111,9 +113,9 @@ namespace WpfStudentApp
 
             stud.SaveStud();
             MessageBox.Show("Студента успішно видалено!","Видалення!");
-              
 
-            
+                this.Tag = "refresh";
+                this.DialogResult = true;
 
             }
 
