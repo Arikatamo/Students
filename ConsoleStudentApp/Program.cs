@@ -34,7 +34,7 @@ namespace ConsoleStudentApp
                                 image = Guid.NewGuid().ToString()
                             };
                             studService.Add(newStud);
-                            studService.Save();
+                            studService.SaveStud();
                             break;
                         }
                     case 2:

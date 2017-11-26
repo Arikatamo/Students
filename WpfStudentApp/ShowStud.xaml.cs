@@ -47,7 +47,7 @@ namespace WpfStudentApp
                 if (temp.Marks_M != null)
                 {
                     // Додає соурс предметів в ДатаГрід
-                    Discipline.ItemsSource = temp.Marks_M;
+                    Discipline.ItemsSource = temp.GetMarksForDataGrid();
                     //foreach (string item in temp.Marks_M.Keys.ToArray())
                     //{
                     //    MessageBox.Show(item);
