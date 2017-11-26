@@ -27,6 +27,8 @@ namespace WpfStudentApp
         {
             InitializeComponent();
             this.stud = stud;
+            //ComboStudName.ItemsSource = stud.GetAllStudents;
+
             foreach (Student item in stud.GetAllStudents)
             {
                 ComboStudName.Items.Add(item.Name);
