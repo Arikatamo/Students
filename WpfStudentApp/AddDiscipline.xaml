@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfStudentApp"
         mc:Ignorable="d"
-        Title="AddDiscipline" Height="170.213" Width="300">
-    <Grid Margin="0,0,0,2" >
+        Title="AddDiscipline" Height="320.401" Width="300" Closing="Window_Closing" >
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="22"/>
-            <ColumnDefinition Width="231*"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="22"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -17,16 +17,31 @@
             <RowDefinition Height="37"/>
             <RowDefinition Height="33"/>
             <RowDefinition Height="31.191"/>
+            <RowDefinition Height="13"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="33"/>
+            <RowDefinition Height="43"/>
         </Grid.RowDefinitions>
-        <Label Content="Додати дисципліну" HorizontalContentAlignment="Center" Background="#FF6573FF" Grid.ColumnSpan="5">
+        <Label Content="Видалити дисципліну" HorizontalContentAlignment="Center" Background="#FF6573FF" Grid.ColumnSpan="3" Grid.Row="5">
             <Label.Effect>
                 <DropShadowEffect BlurRadius="10" ShadowDepth="2"/>
             </Label.Effect>
         </Label>
-        <StackPanel Grid.Column="1" Grid.Row="1" Margin="6,10,6,0" Grid.RowSpan="3">
-            <Label Content="Предмет" Margin="0,0,0,5" Background="Aqua" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+        <Label Content="Додати дисципліну" HorizontalContentAlignment="Center" Background="#FF6573FF" Grid.ColumnSpan="3" >
+            <Label.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="2"/>
+            </Label.Effect>
+        </Label>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" Margin="6,11,6,0" Grid.RowSpan="2">
             <TextBox x:Name="DiscipName" Height="23"/>
             <Button x:Name="add_ocin" Content="Додати дисципліну" Margin="0,10,0,0" HorizontalAlignment="Left" Width="236" Click="add_ocin_Click"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="6" Margin="6,11,6,10" Grid.RowSpan="3">
+            <ComboBox x:Name="ComboDiscipName" Height="23"/>
+            <Button x:Name="DelDisc" Content="Видалити дисципліну" Margin="0,10,0,0" HorizontalAlignment="Left" Width="236" Click="DelDisc_Click" />
+            <Button x:Name="SaveDisciplines" Content="Зберегти зміни до файлу" Margin="0,20,0,0" HorizontalAlignment="Left" Width="236" Click="SaveDisciplines_Click" IsEnabled="False" Height="21" />
         </StackPanel>
 
 
