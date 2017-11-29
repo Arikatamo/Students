@@ -61,6 +61,7 @@ namespace WpfStudentApp
 
                 // }
                 //else 
+                MessageBox.Show(ComboStudName.SelectedIndex.ToString());
                 if (stud.GetAllStudents[ComboStudName.SelectedIndex].Marks_M.ContainsKey(ComboDiscipName.Text))
                 {
                     stud.GetAllStudents[ComboStudName.SelectedIndex].Marks_M[ComboDiscipName.Text].Add(short.Parse(ocin.Text));
@@ -75,13 +76,16 @@ namespace WpfStudentApp
              
             }
 
+            MessageBox.Show("Оцінку успішно додано!", "Успіх");
+            ocin.Text = "";
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
             Student temp = stud.GetAllStudents[ComboStudName.SelectedIndex];
             stud.GetAllStudents.Remove(stud.GetAllStudents[ComboStudName.SelectedIndex]);
             stud.Add(temp);
             stud.SaveStud();
-
-            MessageBox.Show("Оцінку успішно додано!", "Успіх");
-            ocin.Text = "";
         }
     }
 }
